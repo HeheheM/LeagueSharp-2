@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using LeagueSharp;
@@ -187,7 +187,10 @@ namespace RoyalAkali
             {
                 Obj_AI_Hero target = SimpleTs.GetTarget(E.Range, SimpleTs.DamageType.Magical);
                 if (target == null || !target.IsValidTarget(E.Range)) return;
-                E.Cast(target);
+                if (hasBuff(target, "AkaliMota") && !E.IsReady() && Orbwalking.GetRealAutoAttackRange(player) >= player.Distance(target))
+                    orbwalker.ForceTarget(target);
+                else
+                    E.Cast(target);
             }
             else
             {   //Minions in E range                                                                            >= Value in menu
