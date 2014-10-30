@@ -263,7 +263,7 @@ namespace RoyalAkali
 
         static void RaperinoCasterino(Obj_AI_Hero victim)
         {
-            orbwalker.SetAttacks(!Q.IsReady() && !E.IsReady() && player.Distance(victim) < 800f);
+            orbwalker.SetAttack(!Q.IsReady() && !E.IsReady() && player.Distance(victim) < 800f);
             orbwalker.ForceTarget(victim);
             foreach (var item in player.InventoryItems)
                 switch ((int)item.Id)
