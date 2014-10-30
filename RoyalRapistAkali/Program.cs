@@ -24,10 +24,10 @@ namespace RoyalAkali
         static Menu menu = new Menu("Royal Rapist Akali", "Akali", true);
         static Orbwalking.Orbwalker orbwalker;
 
-        static Spell E;
         static Spell Q;
-        static Spell R;
         static Spell W;
+        static Spell E;
+        static Spell R;
         static SpellSlot IgniteSlot = player.GetSpellSlot("SummonerDot");
         static bool packetCast = false;
 
@@ -279,7 +279,7 @@ namespace RoyalAkali
                         break;
                 }
             if (Q.IsReady() && Q.InRange(victim.Position)) Q.Cast(victim, packetCast);
-            if (E.IsReady() && E.InRange(victim.Position)) E.CastIfWillHit(victim, 1, packetCast);
+            if (E.IsReady() && E.InRange(victim.Position)) E.CastIfWillHit(victim, packetCast);
             if (W.IsReady() && W.InRange(victim.Position) && !(hasBuff(victim, "AkaliMota") && player.Distance(victim) > Orbwalking.GetRealAutoAttackRange(player))) W.Cast(V2E(player.Position, victim.Position, player.Distance(victim) + W.Width * 2 - 20), packetCast);
             if (R.IsReady() && R.InRange(victim.Position)) R.Cast(victim, packetCast);
             if (IgniteSlot != SpellSlot.Unknown && player.SummonerSpellbook.CanUseSpell(IgniteSlot) == SpellState.Ready) player.SummonerSpellbook.CastSpell(IgniteSlot, victim);
