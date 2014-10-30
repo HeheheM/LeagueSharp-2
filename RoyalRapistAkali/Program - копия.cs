@@ -113,7 +113,7 @@ namespace RoyalAkali
 
         private static void onUpdate(EventArgs args)
         {
-            orbwalker.SetAttacks(true);
+            orbwalker.SetAttack(true);
             switch (orbwalker.ActiveMode)
             {
                 case Orbwalking.OrbwalkingMode.Combo:
@@ -262,7 +262,7 @@ namespace RoyalAkali
             }
             else
             {
-                orbwalker.SetAttacks(!Q.IsReady() && !E.IsReady());
+                orbwalker.SetAttack(!Q.IsReady() && !E.IsReady());
                 if (menu.SubMenu("combo").Item("useQ").GetValue<bool>())
                     castQ(true);
                 if (menu.SubMenu("combo").Item("useE").GetValue<bool>())
@@ -280,7 +280,7 @@ namespace RoyalAkali
         {
             try
             {
-                orbwalker.SetAttacks(!Q.IsReady() && !E.IsReady() && player.Distance(victim) < 800f);
+                orbwalker.SetAttack(!Q.IsReady() && !E.IsReady() && player.Distance(victim) < 800f);
                 orbwalker.ForceTarget(victim);
                 foreach (var item in player.InventoryItems)
                     switch ((int)item.Id)
